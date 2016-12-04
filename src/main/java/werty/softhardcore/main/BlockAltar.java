@@ -1,4 +1,4 @@
-package werty.hardcoreexpanded.main;
+package werty.softhardcore.main;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;

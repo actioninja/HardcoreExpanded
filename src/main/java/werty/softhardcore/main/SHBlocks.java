@@ -1,4 +1,4 @@
-package werty.hardcoreexpanded.main;
+package werty.softhardcore.main;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -8,7 +8,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
-public class HEBlocks 
+public class SHBlocks
 {
 	public static Block ghostAltar;
 	

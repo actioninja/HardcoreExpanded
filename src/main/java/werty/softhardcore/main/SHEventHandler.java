@@ -1,4 +1,4 @@
-package werty.hardcoreexpanded.main;
+package werty.softhardcore.main;
 
 import net.minecraft.block.Block;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -26,7 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class HEEventHandler 
+public class SHEventHandler
 {
 	
 	private static List<Block> interactableBlocks = new ArrayList<Block>();
@@ -44,7 +44,7 @@ public class HEEventHandler
 		interactableBlocks.add(Blocks.LEVER);
 		interactableBlocks.add(Blocks.WOODEN_BUTTON);
 		interactableBlocks.add(Blocks.STONE_BUTTON);
-		interactableBlocks.add(HEBlocks.ghostAltar);
+		interactableBlocks.add(SHBlocks.ghostAltar);
 		
 		for(String s : Config.interactableBlocks.split(","))
 		{
@@ -64,8 +64,8 @@ public class HEEventHandler
 			}
 		}
 		
-		usableItems.add(HEItems.heart_full);
-		usableItems.add(HEItems.heart_empty);
+		usableItems.add(SHItems.heart_full);
+		usableItems.add(SHItems.heart_empty);
 		
 		for(String s : Config.usableItems.split(","))
 		{
@@ -92,11 +92,11 @@ public class HEEventHandler
 				{
 					event.getEntity().addChatMessage(new TextComponentString("SofterHardcore is meant to be played in survival. It will NOT prevent the deletion of worlds!"));
 				}
-				if(Config.checkForUpdates && !HardcoreExpanded.hasCheckedVersion)
+				if(Config.checkForUpdates && !SoftHardcore.hasCheckedVersion)
 				{
 					check.run();
 					event.getEntity().addChatMessage(VersionChecker.uptoDate);
-					HardcoreExpanded.hasCheckedVersion = true;
+					SoftHardcore.hasCheckedVersion = true;
 				}
 			}	
 			if(nbt.hasKey("ghost") && nbt.getBoolean("ghost"))

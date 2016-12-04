@@ -1,4 +1,4 @@
-package werty.hardcoreexpanded.main;
+package werty.softhardcore.main;
 
 import java.io.File;
 

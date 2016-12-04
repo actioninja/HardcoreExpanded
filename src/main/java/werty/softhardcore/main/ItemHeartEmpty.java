@@ -1,4 +1,4 @@
-package werty.hardcoreexpanded.main;
+package werty.softhardcore.main;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
@@ -38,7 +38,7 @@ public class ItemHeartEmpty extends Item
 		        	 }
 		        	 playerIn.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, Config.sicknessTicks, 1, false, false));//weakness
 		         }
-		         return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, new ItemStack(HEItems.heart_full));
+		         return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, new ItemStack(SHItems.heart_full));
 			}
 		}
 		return new ActionResult(EnumActionResult.FAIL, itemStackIn);

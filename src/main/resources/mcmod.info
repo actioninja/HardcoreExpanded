@@ -1,7 +1,7 @@
 [
 {
-  "modid": "hardcoreexpanded",
-  "name": "Hardcore Expanded",
+  "modid": "softhardcore",
+  "name": "Soft Hardcore",
   "description": "Fear death again and add more of a challenge without worrying about losing your world.",
   "version": "${version}",
   "mcversion": "${mcversion}",

@@ -1,4 +1,4 @@
-package werty.hardcoreexpanded.main;
+package werty.softhardcore.main;
 
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -10,11 +10,11 @@ import org.apache.logging.log4j.Level;
 
 import java.util.Random;
 
-public class HEWorldGenHandler implements IWorldGenerator {
+public class SHWorldGenHandler implements IWorldGenerator {
     private void generateAltar(World world, BlockPos pos) {
         final BlockPos newPos = world.getTopSolidOrLiquidBlock(pos);
 
-        world.setBlockState(newPos, HEBlocks.ghostAltar.getDefaultState());
+        world.setBlockState(newPos, SHBlocks.ghostAltar.getDefaultState());
     }
 
     @Override
