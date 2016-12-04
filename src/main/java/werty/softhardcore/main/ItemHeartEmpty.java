@@ -11,37 +11,36 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.World;
 
-public class ItemHeartEmpty extends Item 
+public class ItemHeartEmpty extends Item
 {
-	public ItemHeartEmpty()
-	{
-		this.setMaxStackSize(1);
-	}
-
-	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand)
+    public ItemHeartEmpty()
     {
-		if(NBTHelper.getPersistedPlayerTag(playerIn).getBoolean("ghost") && !Config.ghostFillHeart)
-		{
-			return new ActionResult<ItemStack>(EnumActionResult.FAIL, itemStackIn);
-		}
-		else
-		{
-			if(playerIn.experienceLevel >= Config.healthXP)
-			{
-				playerIn.experienceLevel -= Config.healthXP;
-		         --itemStackIn.stackSize;
-		         if(Config.fillEffects)
-		         {
-		        	 if(!worldIn.isRemote)
-		        	 {
-		        		 playerIn.addChatMessage(new TextComponentString("You feel weak after transfering energy to the crystal"));
-		        	 }
-		        	 playerIn.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, Config.sicknessTicks, 1, false, false));//weakness
-		         }
-		         return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, new ItemStack(SHItems.heart_full));
-			}
-		}
-		return new ActionResult(EnumActionResult.FAIL, itemStackIn);
-        
+        this.setMaxStackSize(1);
+    }
+
+    public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand)
+    {
+        if(NBTHelper.getPersistedPlayerTag(playerIn).getBoolean("ghost") && !Config.ghostFillHeart)
+        {
+            return new ActionResult<ItemStack>(EnumActionResult.FAIL, itemStackIn);
+        } else
+        {
+            if(playerIn.experienceLevel >= Config.healthXP)
+            {
+                playerIn.experienceLevel -= Config.healthXP;
+                --itemStackIn.stackSize;
+                if(Config.fillEffects)
+                {
+                    if(!worldIn.isRemote)
+                    {
+                        playerIn.addChatMessage(new TextComponentString("You feel weak after transfering energy to the crystal"));
+                    }
+                    playerIn.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, Config.sicknessTicks, 1, false, false));//weakness
+                }
+                return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, new ItemStack(SHItems.heart_full));
+            }
+        }
+        return new ActionResult(EnumActionResult.FAIL, itemStackIn);
+
     }
 }

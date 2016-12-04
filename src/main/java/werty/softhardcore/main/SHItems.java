@@ -11,27 +11,27 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class SHItems
 {
-	public static Item  heart_empty;
-	public static Item  heart_full;
+    public static Item heart_empty;
+    public static Item heart_full;
 
-	public static void init()
-	{
-		heart_empty = new ItemHeartEmpty().setUnlocalizedName("heart_empty").setCreativeTab(CreativeTabs.MISC);
-		heart_full = new ItemHeartFull().setUnlocalizedName("heart_full").setCreativeTab(CreativeTabs.MISC);
-		
-		register(heart_empty);
-		register(heart_full);
-		
-		GameRegistry.addRecipe(new ItemStack(heart_empty, 1), new Object[] {"D D", "DBD", " D ", 'D', Items.DIAMOND, 'B', Blocks.DIAMOND_BLOCK});
-	}
-	
-	public static void register(Item item)
-	{
-		GameRegistry.registerItem(item, item.getUnlocalizedName().substring(5));
-	}
-	
-	public static void registerRender(Item item)
-	{
-		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(item, 0, new ModelResourceLocation(References.MODID + ":" + item.getUnlocalizedName().substring(5), "inventory"));
-	}
+    public static void init()
+    {
+        heart_empty = new ItemHeartEmpty().setUnlocalizedName("heart_empty").setCreativeTab(CreativeTabs.MISC);
+        heart_full = new ItemHeartFull().setUnlocalizedName("heart_full").setCreativeTab(CreativeTabs.MISC);
+
+        register(heart_empty);
+        register(heart_full);
+
+        GameRegistry.addRecipe(new ItemStack(heart_empty, 1), new Object[]{"D D", "DBD", " D ", 'D', Items.DIAMOND, 'B', Blocks.DIAMOND_BLOCK});
+    }
+
+    public static void register(Item item)
+    {
+        GameRegistry.registerItem(item, item.getUnlocalizedName().substring(5));
+    }
+
+    public static void registerRender(Item item)
+    {
+        Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(item, 0, new ModelResourceLocation(References.MODID + ":" + item.getUnlocalizedName().substring(5), "inventory"));
+    }
 }

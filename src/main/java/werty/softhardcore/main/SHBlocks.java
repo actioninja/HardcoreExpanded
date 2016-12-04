@@ -10,23 +10,23 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class SHBlocks
 {
-	public static Block ghostAltar;
-	
-	public static void init()
-	{
-		ghostAltar = new BlockAltar(Material.ROCK).setBlockUnbreakable().setUnlocalizedName("ghost_altar").setCreativeTab(CreativeTabs.MISC);
-		
-		register(ghostAltar);
-	}
-	
-	private static void register(Block block)
-	{
-		GameRegistry.registerBlock(block, block.getUnlocalizedName().substring(5));
-	}
-	
-	public static void registerRender(Block block)
-	{
-		Item item = Item.getItemFromBlock(block);
-		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(item, 0, new ModelResourceLocation(References.MODID + ":" + item.getUnlocalizedName().substring(5), "inventory"));
-	}
+    public static Block ghostAltar;
+
+    public static void init()
+    {
+        ghostAltar = new BlockAltar(Material.ROCK).setBlockUnbreakable().setUnlocalizedName("ghost_altar").setCreativeTab(CreativeTabs.MISC);
+
+        register(ghostAltar);
+    }
+
+    private static void register(Block block)
+    {
+        GameRegistry.registerBlock(block, block.getUnlocalizedName().substring(5));
+    }
+
+    public static void registerRender(Block block)
+    {
+        Item item = Item.getItemFromBlock(block);
+        Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(item, 0, new ModelResourceLocation(References.MODID + ":" + item.getUnlocalizedName().substring(5), "inventory"));
+    }
 }
