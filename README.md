@@ -1,4 +1,4 @@
-HardcoreExpanded is minecraft 1.8 mod that attempts to make life in minecraft a little more challenging. It adds various new tweaks and mechanics. All of which are configurable.
+HardcoreExpanded is minecraftmod that attempts to make life in minecraft a little more challenging. It adds various new tweaks and mechanics. All of which are configurable.
 
 
 Hardcore expanded will make you fear death again and add more of a challenge without worrying about losing your world.

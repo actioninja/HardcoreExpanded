@@ -1,0 +1,57 @@
+buildscript {
+    repositories {
+        jcenter()
+        maven { url = "http://files.minecraftforge.net/maven" }
+    }
+    dependencies {
+        classpath 'net.minecraftforge.gradle:ForgeGradle:2.2-SNAPSHOT'
+    }
+}
+apply plugin: 'net.minecraftforge.gradle.forge'
+
+	
+
+if (System.getenv().BUILD_NUMBER != null) {
+	ext.buildNumber = "${System.getenv().BUILD_NUMBER}"	
+} else {
+	ext.buildNumber = "custom"	
+}
+
+ext.modVersion = "${modVersion}.${ext.buildNumber}"
+
+version = "${mcVersion}-${ext.modVersion}"
+group = modClasspath
+archivesBaseName = modArchiveBaseName
+
+sourceCompatibility = targetCompatibility = "1.8" 
+compileJava {
+    sourceCompatibility = targetCompatibility = "1.8"
+}
+
+
+//TODO: fix forge versioning so it can be changed from the properties file
+minecraft {
+    version = "12.18.2.2099"
+    runDir = "run"
+    mappings = mappingVersion
+}
+
+dependencies {
+
+}
+
+processResources
+{
+    inputs.property "version", project.version
+    inputs.property "mcversion", project.minecraft.version
+
+    from(sourceSets.main.resources.srcDirs) {
+        include 'mcmod.info'
+                
+        expand 'version':project.version, 'mcversion':project.minecraft.version
+    }
+        
+    from(sourceSets.main.resources.srcDirs) {
+        exclude 'mcmod.info'
+    }
+}
