@@ -46,7 +46,6 @@ public class Config
         ghostMode = config.get("Mechanics", "GhostMode", true, "If player will spawn with debuffs").getBoolean();
         fillEffects = config.get("Mechanics", "HeartFillEffects", true, "If player suffer temp. Debuff on filling up a heart").getBoolean();
         ghostInvisibility = config.get("Mechanics", "GhostInvisibility", true, "Gain Invisibility as a ghost").getBoolean();
-        checkForUpdates = config.get("Mechanics", "CheckForUpdates", true, "Should mod check for updates?").getBoolean();
         ghostFillHeart = config.get("Mechanics", "GhostHeartFill", false, "Can ghost players fill hearts?").getBoolean();
         healthEffects = config.get("Mechanics", "HealthEffects", true, "Debuffs on thresholds at 1/2 and 1/3 health and a damage boost at full health").getBoolean();
         woodenToolDamage = config.get("Mechanics", "WoodenToolDamage", false, "Should wooden tools do damage").getBoolean();

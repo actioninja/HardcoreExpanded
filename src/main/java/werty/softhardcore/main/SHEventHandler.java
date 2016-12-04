@@ -80,7 +80,6 @@ public class SHEventHandler
     @SubscribeEvent
     public void onPlayerJoin(EntityJoinWorldEvent event)
     {
-        VersionChecker check = new VersionChecker(References.VERSION, "https://raw.githubusercontent.com/werty1124/SofterHardcore/master/version.txt", References.NAME);
         if(event.getEntity() instanceof EntityPlayer)
         {
             EntityPlayer player = (EntityPlayer) event.getEntity();
@@ -91,12 +90,6 @@ public class SHEventHandler
                 if(player.worldObj.getWorldInfo().isHardcoreModeEnabled())
                 {
                     event.getEntity().addChatMessage(new TextComponentString("SofterHardcore is meant to be played in survival. It will NOT prevent the deletion of worlds!"));
-                }
-                if(Config.checkForUpdates && !SoftHardcore.hasCheckedVersion)
-                {
-                    check.run();
-                    event.getEntity().addChatMessage(VersionChecker.uptoDate);
-                    SoftHardcore.hasCheckedVersion = true;
                 }
             }
             if(nbt.hasKey("ghost") && nbt.getBoolean("ghost"))
