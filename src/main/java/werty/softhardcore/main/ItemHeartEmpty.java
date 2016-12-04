@@ -20,7 +20,7 @@ public class ItemHeartEmpty extends Item
 
 	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand)
     {
-		if(NBTHelper.getPersistedPlayerTag(playerIn).getBoolean("ghost") == true && Config.ghostFillHeart == false)
+		if(NBTHelper.getPersistedPlayerTag(playerIn).getBoolean("ghost") && !Config.ghostFillHeart)
 		{
 			return new ActionResult<ItemStack>(EnumActionResult.FAIL, itemStackIn);
 		}
