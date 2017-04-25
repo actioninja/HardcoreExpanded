@@ -9,6 +9,13 @@ buildscript {
 }
 apply plugin: 'net.minecraftforge.gradle.forge'
 
+ext.configFile = file "build.properties"
+
+configFile.withReader {
+    def prop = new Properties()
+    prop.load(it)
+    project.ext.config = new ConfigSlurper().parse prop
+}
 	
 
 if (System.getenv().BUILD_NUMBER != null) {
@@ -17,11 +24,11 @@ if (System.getenv().BUILD_NUMBER != null) {
 	ext.buildNumber = "custom"	
 }
 
-ext.modVersion = "${modVersion}.${ext.buildNumber}"
+ext.modVersion = "${config.modVersion}.${ext.buildNumber}"
 
-version = "${mcVersion}-${ext.modVersion}"
-group = modClasspath
-archivesBaseName = modArchiveBaseName
+version = "${config.mcVersion}-${ext.modVersion}"
+group = config.modClasspath
+archivesBaseName = config.modArchiveBaseName
 
 sourceCompatibility = targetCompatibility = "1.8" 
 compileJava {
@@ -29,11 +36,11 @@ compileJava {
 }
 
 
-//TODO: fix forge versioning so it can be changed from the properties file
 minecraft {
-    version = "12.18.2.2099"
+    version = config.forgeVersion
     runDir = "run"
-    mappings = mappingVersion
+    mappings = config.mappingVersion
+    replace '${version}', project.version
 }
 
 dependencies {
