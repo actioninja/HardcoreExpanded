@@ -19,8 +19,6 @@ public class SoftHardcore
     @SidedProxy(clientSide = References.CLIENT_PROXY_CLASS, serverSide = References.SERVER_PROXY_CLASS)
     public static CommonProxy proxy;
 
-    public static boolean hasCheckedVersion = false;
-
     @EventHandler
     public void preInit(FMLPreInitializationEvent event)
     {
