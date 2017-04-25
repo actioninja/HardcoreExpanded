@@ -28,7 +28,7 @@ public class BlockAltar extends Block
     }
 
     @Override
-    public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, @Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ)
+    public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ)
     {
         if(!worldIn.isRemote)
         {
@@ -40,10 +40,10 @@ public class BlockAltar extends Block
                 nbt.setBoolean("ghost", false);
                 playerIn.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(Config.healthStarting);
                 nbt.setDouble("health", playerIn.getMaxHealth());
-                playerIn.addChatMessage(new TextComponentString("You feel the altar pull you back from the dead!"));
+                playerIn.sendStatusMessage(new TextComponentString("You feel the altar pull you back from the dead!"), true);
             } else
             {
-                playerIn.addChatMessage(new TextComponentString("you can feel a strange presence"));
+                playerIn.sendStatusMessage(new TextComponentString("you can feel a strange presence"), true);
             }
         }
         return true;

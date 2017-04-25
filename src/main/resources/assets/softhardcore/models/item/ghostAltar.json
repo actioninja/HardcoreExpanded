@@ -1,5 +1,5 @@
 {
-    "parent": "hardcoreexpanded:block/GhostAltar",
+    "parent": "softhardcore:block/ghostAltar",
     "display": {
         "thirdperson": {
             "rotation": [ 10, -45, 170 ],

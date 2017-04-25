@@ -14,14 +14,10 @@ public class SHBlocks
 
     public static void init()
     {
-        ghostAltar = new BlockAltar(Material.ROCK).setBlockUnbreakable().setUnlocalizedName("ghost_altar").setCreativeTab(CreativeTabs.MISC);
+        ghostAltar = new BlockAltar(Material.ROCK).setBlockUnbreakable().setUnlocalizedName("ghostAltar").setCreativeTab(CreativeTabs.MISC);
+        ghostAltar.setRegistryName("ghostAltar");
 
-        register(ghostAltar);
-    }
-
-    private static void register(Block block)
-    {
-        GameRegistry.registerBlock(block, block.getUnlocalizedName().substring(5));
+        GameRegistry.register(ghostAltar);
     }
 
     public static void registerRender(Block block)

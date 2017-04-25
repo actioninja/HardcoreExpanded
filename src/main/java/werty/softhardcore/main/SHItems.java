@@ -11,24 +11,22 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class SHItems
 {
-    public static Item heart_empty;
-    public static Item heart_full;
+    public static Item heartEmpty;
+    public static Item heartFull;
 
     public static void init()
     {
-        heart_empty = new ItemHeartEmpty().setUnlocalizedName("heart_empty").setCreativeTab(CreativeTabs.MISC);
-        heart_full = new ItemHeartFull().setUnlocalizedName("heart_full").setCreativeTab(CreativeTabs.MISC);
+        heartEmpty = new ItemHeartEmpty().setUnlocalizedName("heartEmpty").setCreativeTab(CreativeTabs.MISC);
+        heartEmpty.setRegistryName("heartEmpty");
+        heartFull = new ItemHeartFull().setUnlocalizedName("heartFull").setCreativeTab(CreativeTabs.MISC);
+        heartFull.setRegistryName("heartFull");
 
-        register(heart_empty);
-        register(heart_full);
+        GameRegistry.register(heartEmpty);
+        GameRegistry.register(heartFull);
 
-        GameRegistry.addRecipe(new ItemStack(heart_empty, 1), new Object[]{"D D", "DBD", " D ", 'D', Items.DIAMOND, 'B', Blocks.DIAMOND_BLOCK});
+        GameRegistry.addRecipe(new ItemStack(heartEmpty, 1), new Object[]{"D D", "DBD", " D ", 'D', Items.DIAMOND, 'B', Blocks.DIAMOND_BLOCK});
     }
 
-    public static void register(Item item)
-    {
-        GameRegistry.registerItem(item, item.getUnlocalizedName().substring(5));
-    }
 
     public static void registerRender(Item item)
     {

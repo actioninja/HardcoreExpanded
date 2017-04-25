@@ -34,6 +34,8 @@ public class SHEventHandler
 
     private static List<Item> usableItems = new ArrayList<Item>();
 
+    //TODO: have things actually be allowed, nothing is at the moment
+    /*
     public static void loadAllowedBlocksandItems()
     {
         interactableBlocks.add(Blocks.ACACIA_DOOR);
@@ -64,8 +66,8 @@ public class SHEventHandler
             }
         }
 
-        usableItems.add(SHItems.heart_full);
-        usableItems.add(SHItems.heart_empty);
+        usableItems.add(SHItems.heartFull);
+        usableItems.add(SHItems.heartEmpty);
 
         for(String s : Config.usableItems.split(","))
         {
@@ -76,6 +78,7 @@ public class SHEventHandler
             }
         }
     }
+     */
 
     @SubscribeEvent
     public void onPlayerJoin(EntityJoinWorldEvent event)
@@ -87,16 +90,16 @@ public class SHEventHandler
 
             if(!event.getWorld().isRemote)
             {
-                if(player.worldObj.getWorldInfo().isHardcoreModeEnabled())
+                if(player.getEntityWorld().getWorldInfo().isHardcoreModeEnabled())
                 {
-                    event.getEntity().addChatMessage(new TextComponentString("SofterHardcore is meant to be played in survival. It will NOT prevent the deletion of worlds!"));
+                    ((EntityPlayer) event.getEntity()).sendStatusMessage(new TextComponentString("SofterHardcore is meant to be played in survival. It will NOT prevent the deletion of worlds!"), false);
                 }
             }
             if(nbt.hasKey("ghost") && nbt.getBoolean("ghost"))
             {
                 if(!event.getWorld().isRemote)
                 {
-                    event.getEntity().addChatMessage(new TextComponentString("You have exhausted all of your lives and can no longer interact with the world"));
+                    ((EntityPlayer) event.getEntity()).sendStatusMessage(new TextComponentString("You have exhausted all of your lives and can no longer interact with the world"), true);
                 }
             } else
             {
@@ -296,7 +299,7 @@ public class SHEventHandler
 
         if(nbt.getBoolean("ghost"))
         {
-            Block block = player.worldObj.getBlockState(event.getPos()).getBlock();
+            Block block = player.getEntityWorld().getBlockState(event.getPos()).getBlock();
             if(!interactableBlocks.contains(block))
             {
                 event.setCanceled(true);
@@ -312,7 +315,7 @@ public class SHEventHandler
 
         if(nbt.getBoolean("ghost"))
         {
-            Block block = player.worldObj.getBlockState(event.getPos()).getBlock();
+            Block block = player.getEntityWorld().getBlockState(event.getPos()).getBlock();
             if(!breakableBlocks.contains(block))
             {
                 event.setCanceled(true);

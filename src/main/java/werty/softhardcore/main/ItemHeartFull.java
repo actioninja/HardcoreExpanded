@@ -18,15 +18,15 @@ public class ItemHeartFull extends Item
     }
 
     @Override
-    public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand)
+    public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand hand)
     {
-        --itemStackIn.stackSize;
+        playerIn.getHeldItem(hand).shrink(1);
         if(NBTHelper.getPersistedPlayerTag(playerIn).hasKey("ghost") && NBTHelper.getPersistedPlayerTag(playerIn).getBoolean("ghost"))
         {
             NBTHelper.getPersistedPlayerTag(playerIn).setBoolean("ghost", false);
             playerIn.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(Config.healthStarting);
             NBTHelper.getPersistedPlayerTag(playerIn).setDouble("health", playerIn.getMaxHealth());
-            playerIn.addChatMessage(new TextComponentString("You have been brought back from the dead!"));
+            playerIn.sendStatusMessage(new TextComponentString("You have been brought back from the dead!"), true);
         } else
         {
             if(playerIn.getMaxHealth() < Config.healthMax)
@@ -35,6 +35,6 @@ public class ItemHeartFull extends Item
                 NBTHelper.getPersistedPlayerTag(playerIn).setDouble("health", playerIn.getMaxHealth());
             }
         }
-        return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, itemStackIn);
+        return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, playerIn.getHeldItem(hand));
     }
 }

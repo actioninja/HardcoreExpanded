@@ -14,8 +14,8 @@ public class ClientProxy extends CommonProxy
     @Override
     public void registerRenders()
     {
-        SHItems.registerRender(SHItems.heart_empty);
-        SHItems.registerRender(SHItems.heart_full);
+        SHItems.registerRender(SHItems.heartEmpty);
+        SHItems.registerRender(SHItems.heartFull);
 
         SHBlocks.registerRender(SHBlocks.ghostAltar);
     }

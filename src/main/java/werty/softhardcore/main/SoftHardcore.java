@@ -34,7 +34,7 @@ public class SoftHardcore
     {
         proxy.registerRenders();
         proxy.init(event);
-        SHEventHandler.loadAllowedBlocksandItems();
+        //SHEventHandler.loadAllowedBlocksandItems();
         GameRegistry.registerWorldGenerator(new SHWorldGenHandler(), 0);
     }
 

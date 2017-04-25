@@ -18,29 +18,29 @@ public class ItemHeartEmpty extends Item
         this.setMaxStackSize(1);
     }
 
-    public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand)
+    public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand hand)
     {
         if(NBTHelper.getPersistedPlayerTag(playerIn).getBoolean("ghost") && !Config.ghostFillHeart)
         {
-            return new ActionResult<ItemStack>(EnumActionResult.FAIL, itemStackIn);
+            return new ActionResult<ItemStack>(EnumActionResult.FAIL, playerIn.getHeldItem(hand));
         } else
         {
             if(playerIn.experienceLevel >= Config.healthXP)
             {
                 playerIn.experienceLevel -= Config.healthXP;
-                --itemStackIn.stackSize;
+                playerIn.getHeldItem(hand).shrink(1);
                 if(Config.fillEffects)
                 {
                     if(!worldIn.isRemote)
                     {
-                        playerIn.addChatMessage(new TextComponentString("You feel weak after transfering energy to the crystal"));
+                        playerIn.sendStatusMessage(new TextComponentString("You feel weak after transfering energy to the crystal"), true);
                     }
                     playerIn.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, Config.sicknessTicks, 1, false, false));//weakness
                 }
-                return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, new ItemStack(SHItems.heart_full));
+                return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, new ItemStack(SHItems.heartFull));
             }
         }
-        return new ActionResult(EnumActionResult.FAIL, itemStackIn);
+        return new ActionResult(EnumActionResult.FAIL, playerIn.getHeldItem(hand));
 
     }
 }
